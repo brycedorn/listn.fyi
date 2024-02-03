@@ -1,17 +1,44 @@
 <script>
-	import Header from './Header.svelte';
+	import { onMount } from 'svelte';
+
+	import SvelteLogo from '$lib/images/svelte.svelte';
+	import Deno from '$lib/images/deno.svelte';
+	import Codepen from '$lib/images/codepen.svelte';
+	import Github from '$lib/images/github.svelte';
 	import './styles.css';
+
+	let host = '';
+
+	onMount(() => host = window.location.host);
 </script>
 
 <div class="app">
-	<Header />
-
+	<header>
+		Create your own! Make a public playlist on Spotify with the name "lstnto" and add a song to it. Your shareable URL is {host}/your-username.
+	</header>
 	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Built with</p>
+		<a href="https://kit.svelte.dev">
+			<SvelteLogo />
+		</a>
+		<p>and</p>
+		<a href="https://deno.com/">
+			<Deno />
+		</a>
+		<div class="spacer" />
+		<p>Source:</p>
+		<a href="https://github.com/brycedorn/lstnto">
+			<Github />
+		</a>
+		<div class="spacer" />
+		<p>CSS record player:</p>
+		<a href="https://codepen.io/robrehrig/pen/AooLxK">
+			<Codepen />
+		</a>
 	</footer>
 </div>
 
@@ -26,6 +53,8 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		padding: 1rem;
 		width: 100%;
 		max-width: 64rem;
@@ -33,16 +62,21 @@
 		box-sizing: border-box;
 	}
 
-	footer {
+	header, footer {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
 	}
 
 	footer a {
-		font-weight: bold;
+		width: 16px;
+		margin: 4px;
+	}
+
+	.spacer {
+		width: 6px;
 	}
 
 	@media (min-width: 480px) {
