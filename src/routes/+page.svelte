@@ -1,11 +1,3 @@
-<script>
-  import { onMount } from 'svelte';
-
-  let host = '';
-
-  onMount(() => (host = window.location.host));
-</script>
-
 <svelte:head>
   <title>Missing username</title>
   <meta name="description" content="Svelte demo app" />
@@ -14,7 +6,7 @@
 <div class="centered">
   <h1>User not provided</h1>
   <p>Type your Spotify username in the URL, after the "/".</p>
-  <p>(e.g. {host}/your-username)</p>
+  <p>(e.g. lstnto.deno.dev/your-username)</p>
 </div>
 
 <style>

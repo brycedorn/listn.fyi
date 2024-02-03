@@ -1,21 +1,15 @@
 <script>
-  import { onMount } from 'svelte';
-
   import SvelteLogo from '$lib/images/svelte.svelte';
   import Deno from '$lib/images/deno.svelte';
   import Codepen from '$lib/images/codepen.svelte';
   import Github from '$lib/images/github.svelte';
   import './styles.css';
-
-  let host = '';
-
-  onMount(() => (host = window.location.host));
 </script>
 
 <div class="app">
   <header>
     Create your own! Make a public playlist on Spotify with the name "lstnto" and add a song to it.
-    Your shareable URL is {host}/your-username.
+    Your shareable URL is lstnto.deno.dev/your-username.
   </header>
   <main>
     <slot />
@@ -69,7 +63,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px;
+    padding: 12px 24px;
   }
 
   footer a {

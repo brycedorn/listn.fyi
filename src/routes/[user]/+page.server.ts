@@ -62,7 +62,7 @@ const fetchClientToken = async () => {
   }
 
   const data = await response.json();
-  console.log('Token:', data.access_token);
+  // console.log('Token:', data.access_token);
   return data.access_token;
 };
 
