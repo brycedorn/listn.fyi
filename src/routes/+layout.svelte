@@ -10,7 +10,7 @@
   <header>
     <p>
       <small
-        >Create your own! Make a public playlist on Spotify with the name <b>"lstnto"</b> and add a
+        >Create your own! Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (without quotes) and add a
         song to it. Your shareable URL is
         <b><a href="https://listn.fyi/your-username">listn.fyi/your-username</a></b
         >.</small
@@ -35,7 +35,7 @@
     <div>
       <div class="section">
         <p>Source</p>
-        <a href="https://github.com/brycedorn/lstnto">
+        <a href="https://github.com/brycedorn/listn.fyi">
           <Github width={20} />
         </a>
       </div>

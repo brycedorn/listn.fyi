@@ -8,7 +8,7 @@ import type {
 } from '$lib/types/api.js';
 
 const authUrl = 'https://accounts.spotify.com/api/token';
-const recommendedPlaylistName = 'lstnto';
+const recommendedPlaylistName = 'listn.fyi';
 
 export async function load({ params }) {
   // let accessToken;
