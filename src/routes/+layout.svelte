@@ -22,24 +22,30 @@
   </main>
 
   <footer>
-    <p>Built with</p>
-    <a href="https://kit.svelte.dev">
-      <SvelteLogo />
-    </a>
-    <p>and</p>
-    <a href="https://deno.com/">
-      <Deno />
-    </a>
-    <div class="spacer" />
-    <p>Source:</p>
-    <a href="https://github.com/brycedorn/lstnto">
-      <Github />
-    </a>
-    <div class="spacer" />
-    <p>CSS record player:</p>
-    <a href="https://codepen.io/robrehrig/pen/AooLxK">
-      <Codepen />
-    </a>
+    <div class="section">
+      <p>Built with</p>
+      <a href="https://kit.svelte.dev">
+        <SvelteLogo width={20} />
+      </a>
+      <p>and</p>
+      <a href="https://deno.com/">
+        <Deno width={20} />
+      </a>
+    </div>
+    <div>
+      <div class="section">
+        <p>Source</p>
+        <a href="https://github.com/brycedorn/lstnto">
+          <Github width={20} />
+        </a>
+      </div>
+      <div class="section">
+        <p>CSS record player</p>
+        <a href="https://codepen.io/robrehrig/pen/AooLxK">
+          <Codepen width={20} />
+        </a>
+      </div>
+    </div>
   </footer>
 </div>
 
@@ -47,7 +53,8 @@
   .app {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
 
   main {
@@ -72,13 +79,23 @@
     padding: 12px 24px;
   }
 
-  footer a {
-    width: 16px;
-    margin: 4px;
+  footer {
+    flex-wrap: wrap;
   }
 
-  .spacer {
-    width: 6px;
+  footer p {
+    margin: 0;
+  }
+
+  footer div {
+    display: flex;
+    align-items: center;
+    margin: 0 2px;
+  }
+
+  footer div a {
+    margin: 4px;
+    white-space: nowrap;
   }
 
   @media (min-width: 480px) {

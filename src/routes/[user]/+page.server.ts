@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
-import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
+import { CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN } from '$env/static/private';
+import { dev } from '$app/environment';
 import type {
   SpotifyPlaylist,
   SpotifyPlaylistTracksResponse,
@@ -10,7 +11,13 @@ const authUrl = 'https://accounts.spotify.com/api/token';
 const recommendedPlaylistName = 'lstnto';
 
 export async function load({ params }) {
-  const accessToken = await fetchClientToken();
+  let accessToken;
+  if (dev) {
+    accessToken = ACCESS_TOKEN;
+  } else {
+    accessToken = await fetchClientToken();
+  }
+
   const userId = params.user;
 
   let playlists;
