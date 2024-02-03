@@ -12,7 +12,7 @@
       <small
         >Create your own! Make a public playlist on Spotify with the name <b>"lstnto"</b> and add a
         song to it. Your shareable URL is
-        <b><a href="https://lstnto.deno.dev/your-username">lstnto.deno.dev/your-username</a></b
+        <b><a href="https://listn.fyi/your-username">listn.fyi/your-username</a></b
         >.</small
       >
     </p>

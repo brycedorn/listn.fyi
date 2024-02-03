@@ -6,7 +6,7 @@
 <div class="centered">
   <h1>User not provided</h1>
   <p>Type your Spotify username in the URL, after the "/".</p>
-  <p>(e.g. lstnto.deno.dev/your-username)</p>
+  <p>(e.g. listn.fyi/your-username)</p>
 </div>
 
 <style>
