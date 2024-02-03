@@ -1,22 +1,37 @@
 <script>
+  import { writable } from 'svelte/store';
+  import { browser } from '$app/environment';
   import SvelteLogo from '$lib/images/svelte.svelte';
   import Deno from '$lib/images/deno.svelte';
   import Codepen from '$lib/images/codepen.svelte';
   import Github from '$lib/images/github.svelte';
   import './styles.css';
+
+  export const ctaStatus = writable((browser && localStorage.getItem('cta-status')) || 'shown');
+
+  ctaStatus.subscribe((val) => {
+    if (browser) {
+      localStorage.setItem('cta-status', val);
+    }
+  });
 </script>
 
 <div class="app">
-  <header>
-    <p>
-      <small
-        >Create your own! Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (without quotes) and add a
-        song to it. Your shareable URL is
-        <b><a href="https://listn.fyi/your-username">listn.fyi/your-username</a></b
-        >.</small
-      >
-    </p>
-  </header>
+  {#if browser && $ctaStatus === 'shown'}
+    <header>
+      <p>
+        <small
+          >Create your own! Make a public playlist on Spotify with the name <b>"listn.fyi"</b>
+          (without quotes) and add a song to it. Your shareable URL is
+          <b><a href="https://listn.fyi/your-username">listn.fyi/your-username</a></b>.</small
+        >
+      </p>
+      <button on:click={() => ctaStatus.set('hidden')}>+</button>
+    </header>
+  {:else}
+    <div class="empty" />
+  {/if}
+
   <main>
     <slot />
   </main>
@@ -70,6 +85,26 @@
     box-sizing: border-box;
   }
 
+  header p {
+    margin-right: 8px;
+  }
+
+  header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .empty {
+    height: 111px;
+  }
+
   header,
   footer {
     display: flex;
@@ -101,6 +136,24 @@
   @media (min-width: 480px) {
     footer {
       padding: 12px 0;
+    }
+  }
+
+  @media (min-width: 550px) {
+    .empty {
+      height: 93px;
+    }
+  }
+
+  @media (min-width: 1050px) {
+    header button {
+      position: relative;
+      top: -8px;
+      left: 0;
+    }
+
+    .empty {
+      height: 74px;
     }
   }
 </style>

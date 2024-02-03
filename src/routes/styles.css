@@ -35,12 +35,13 @@ a {
 
 #turntable {
   width: 660px;
-  height: 350px;
+  height: 200px;
+  margin: 20px 0;
   z-index: -1;
 }
 
 #turntable-inner {
-  transform: scale(1.2);
+  transform: scale(0.6);
 }
 
 #vert-spacer {
@@ -48,21 +49,22 @@ a {
 }
 
 #text {
-  position: relative;
+  position: unset;
   right: 160px;
 }
 
-@media (max-width: 700px) {
+@media (min-width: 700px) {
   #turntable {
-    height: 200px;
+    height: 350px;
+    margin: 100px 0 0 0;
   }
 
   #turntable-inner {
-    transform: scale(0.6);
+    transform: scale(1.2);
   }
 
   #text {
-    position: unset;
+    position: relative;
   }
 }
 

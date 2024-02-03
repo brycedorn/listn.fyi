@@ -34,7 +34,7 @@ export async function load({ params }) {
 
   let recommendPlaylist;
   try {
-    recommendPlaylist = findRecommendPlaylist(playlists.items);
+    recommendPlaylist = findRecommendPlaylist(playlists?.items);
   } catch (e) {
     if (e instanceof Error) {
       return {
@@ -105,8 +105,8 @@ const fetchUserPlaylists = async (
   return data;
 };
 
-const findRecommendPlaylist = (playlists: SpotifyPlaylist[]): SpotifyPlaylist => {
-  const match = playlists.find(
+const findRecommendPlaylist = (playlists?: SpotifyPlaylist[]): SpotifyPlaylist => {
+  const match = playlists?.find(
     (playlist: SpotifyPlaylist) => playlist.name === recommendedPlaylistName
   );
 
