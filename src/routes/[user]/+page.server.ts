@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer';
 import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
 import type {
   SpotifyPlaylist,
