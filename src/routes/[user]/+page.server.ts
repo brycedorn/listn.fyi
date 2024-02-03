@@ -13,7 +13,17 @@ export async function load({ params }) {
   const accessToken = await fetchClientToken();
   const userId = params.user;
 
-  const playlists = await fetchUserPlaylists(accessToken, userId);
+  let playlists;
+  try {
+    playlists = await fetchUserPlaylists(accessToken, userId);
+  } catch (e) {
+    if (e instanceof Error) {
+      return {
+        status: 404,
+        error: e.message
+      };
+    }
+  }
 
   let recommendPlaylist;
   try {

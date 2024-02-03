@@ -29,15 +29,23 @@
 </script>
 
 <svelte:head>
-  <title>{data.title}</title>
   <meta name="description" content="Recommending one song at a time" />
+  {#if data.track}
+    <title>{data.title}</title>
+    <meta property="og:image" content={data.track.album.images[1].url} />
+    <link rel="icon" type="image/png" href={data.track.album.images[1].url} />
+  {:else}
+    <title>Error</title>
+    <meta property="og:image" content="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  {/if}
 </svelte:head>
 
 {#if data.error}
-  <div class="text-column">
+  <center>
     <h1>Error</h1>
     <p>{data.error}</p>
-  </div>
+  </center>
 {:else if data.track}
   <div
     id="turntable"
@@ -82,27 +90,25 @@
       <div id="head" />
     </div>
 
+    <div id="vert-spacer" />
+
     <div class="text-column">
       <audio controls on:play={onPlay} on:pause={onPause}>
         <source src={data.track.preview_url} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
       <h1>{data.track.name}</h1>
-      <h2>{data.track.artists[0].name}</h2>
+      <h2>{data.track.artists.map(({ name }) => name).join(', ')}</h2>
       <h3>{data.track.album.name}</h3>
-      <p>Released {releaseDate}</p>
-      <p>Listen on <a href={data.track.external_urls.spotify}>Spotify</a></p>
-      <p>Last updated {updatedDate}</p>
+      <p>Released {releaseDate}.</p>
+      <p>Listen to the full song on <a href={data.track.external_urls.spotify}>Spotify.</a></p>
+      <p><small>Last updated {updatedDate}.</small></p>
     </div>
   </div>
 {/if}
 
 <style>
-  .text-column {
+  #vert-spacer {
     margin-top: 290px;
-  }
-
-  .text-column p a {
-    display: inline;
   }
 </style>

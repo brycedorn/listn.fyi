@@ -8,8 +8,14 @@
 
 <div class="app">
   <header>
-    Create your own! Make a public playlist on Spotify with the name "lstnto" and add a song to it.
-    Your shareable URL is lstnto.deno.dev/your-username.
+    <p>
+      <small
+        >Create your own! Make a public playlist on Spotify with the name <b>"lstnto"</b> and add a
+        song to it. Your shareable URL is
+        <b><a href="https://lstnto.deno.dev/your-username">lstnto.deno.dev/your-username</a></b
+        >.</small
+      >
+    </p>
   </header>
   <main>
     <slot />
