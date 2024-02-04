@@ -12,6 +12,7 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#222" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="#222" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <meta property="og:title" content="listn.fyi" />
   <meta property="og:description" content="listn.fyi" />
   <meta property="og:image" content="/favicon.png" />

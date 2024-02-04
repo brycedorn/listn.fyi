@@ -33,13 +33,11 @@
 <svelte:head>
   {#if data.track}
     <title>{data.title}</title>
-    <meta property="og:image" content={data.track.album.images[1].url} />
     <link rel="icon" type="image/png" href={data.track.album.images[1].url} />
     <meta property="og:image" content={data.track.album.images[1].url} />
     <meta name="twitter:image" content={data.track.album.images[1].url} />
   {:else}
     <title>Error for {data.userId}</title>
-    <meta property="og:image" content="/favicon.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta property="og:image" content="/favicon.png" />
     <meta name="twitter:image" content="/favicon.png" />
