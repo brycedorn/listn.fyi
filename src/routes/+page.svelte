@@ -37,18 +37,20 @@
     <p>1) Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (no quotes).</p>
     <p>2) Add a song you'd recommend to it.</p>
     <p>
-      3) Go to the URL for your Spotify username, added after the "/" (e.g. <a
-        href="https://listn.fyi/your-username">listn.fyi/your-username</a
-      >).
+      3) Go to the URL for your Spotify username, e.g. <a href="https://listn.fyi/your-username"
+        >listn.fyi/your-username</a
+      >.
     </p>
   </div>
 </center>
 
 <style>
+  #info {
+    max-width: 80%;
+  }
+
   #info p {
     text-align: left;
-  }
-  #info p {
     margin: 12px 24px;
   }
 
