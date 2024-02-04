@@ -1,6 +1,6 @@
 import { Buffer } from 'node:buffer';
-import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
-// import { dev } from '$app/environment';
+import { CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN } from '$env/static/private';
+import { dev } from '$app/environment';
 import type {
   SpotifyPlaylist,
   SpotifyPlaylistTracksResponse,
@@ -11,13 +11,13 @@ const authUrl = 'https://accounts.spotify.com/api/token';
 const recommendedPlaylistName = 'listn.fyi';
 
 export async function load({ params }) {
-  // let accessToken;
-  // if (dev) {
-  //   accessToken = ACCESS_TOKEN;
-  // } else {
-  //   accessToken = await fetchClientToken();
-  // }
-  const accessToken = await fetchClientToken();
+  let accessToken;
+  if (dev) {
+    accessToken = ACCESS_TOKEN;
+  } else {
+    accessToken = await fetchClientToken();
+  }
+  // const accessToken = await fetchClientToken();
   const userId = params.user;
 
   let playlists;
@@ -27,7 +27,8 @@ export async function load({ params }) {
     if (e instanceof Error) {
       return {
         status: 404,
-        error: e.message
+        error: e.message,
+        userId
       };
     }
   }
@@ -39,7 +40,8 @@ export async function load({ params }) {
     if (e instanceof Error) {
       return {
         status: 404,
-        error: e.message
+        error: e.message,
+        userId
       };
     }
   }
@@ -51,7 +53,8 @@ export async function load({ params }) {
     if (!track) {
       return {
         status: 404,
-        error: 'No tracks found in playlist'
+        error: 'No tracks found in playlist',
+        userId
       };
     }
 
@@ -113,7 +116,7 @@ const findRecommendPlaylist = (playlists?: SpotifyPlaylist[]): SpotifyPlaylist =
   if (match) {
     return match;
   } else {
-    throw new Error(`No playlist found with name: ${recommendedPlaylistName}`);
+    throw new Error(`No playlist found with name: "${recommendedPlaylistName}".`);
   }
 };
 

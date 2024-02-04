@@ -1,5 +1,6 @@
 <script>
   import { writable } from 'svelte/store';
+  import { page } from '$app/stores';
   import { browser } from '$app/environment';
   import SvelteLogo from '$lib/images/svelte.svelte';
   import Deno from '$lib/images/deno.svelte';
@@ -17,13 +18,16 @@
 </script>
 
 <div class="app">
-  {#if browser && $ctaStatus === 'shown'}
+  {#if browser && $page.url.pathname !== '/' && $ctaStatus === 'shown'}
     <header>
       <p>
         <small
-          >Create your own! Make a public playlist on Spotify with the name <b>"listn.fyi"</b>
-          (without quotes) and add a song to it. Your shareable URL is
-          <b><a href="https://listn.fyi/your-username">listn.fyi/your-username</a></b>.</small
+          >Recommend a song to your friends! Make a public playlist on Spotify with the name <b
+            >"listn.fyi"</b
+          >
+          (without quotes) and add a song to it. Shareable URL is
+          <b><a href="https://listn.fyi/your-username">listn.fyi/your-spotify-username</a></b
+          >.</small
         >
       </p>
       <button on:click={() => ctaStatus.set('hidden')}>+</button>

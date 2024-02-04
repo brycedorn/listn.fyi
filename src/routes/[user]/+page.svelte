@@ -1,4 +1,6 @@
 <script>
+  import Turntable from '../../components/turntable.svelte';
+
   export let data;
 
   export let releaseDate =
@@ -29,71 +31,28 @@
 </script>
 
 <svelte:head>
-  <meta name="description" content="Recommending one song at a time" />
   {#if data.track}
     <title>{data.title}</title>
     <meta property="og:image" content={data.track.album.images[1].url} />
     <link rel="icon" type="image/png" href={data.track.album.images[1].url} />
+    <meta property="og:image" content={data.track.album.images[1].url} />
+    <meta name="twitter:image" content={data.track.album.images[1].url} />
   {:else}
-    <title>Error</title>
+    <title>Error for {data.userId}</title>
     <meta property="og:image" content="/favicon.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:image" content="/favicon.png" />
+    <meta name="twitter:image" content="/favicon.png" />
   {/if}
 </svelte:head>
 
 {#if data.error}
   <center>
-    <h1>Error</h1>
+    <h1>Error for user: {data.userId}</h1>
     <p>{data.error}</p>
   </center>
 {:else if data.track}
-  <div
-    id="turntable"
-    style={isPlaying ? '--animation-play-state: running' : '--animation-play-state: paused'}
-  >
-    <div id="turntable-inner">
-      <div id="table-shadow" />
-      <div id="table-feet" />
-      <div id="wood">
-        <div id="grain1" />
-        <div id="grain2" />
-        <div id="grain3" />
-        <div id="grain4" />
-        <div id="grain5" />
-        <div id="grain6" />
-      </div>
-      <div id="wood2">
-        <div id="grain7" />
-        <div id="grain8" />
-        <div id="grain9" />
-        <div id="grain10" />
-        <div id="grain11" />
-      </div>
-      <div id="table" />
-      <div id="button" />
-      <div id="disk">
-        <div id="label">
-          <img src={data.track.album.images[1].url} alt="Album cover" />
-        </div>
-      </div>
-      <div id="needle">
-        <div id="axis-shadow" />
-        <div id="axis" />
-        <div id="axis-surround" />
-        <div id="arm-shadow" />
-        <div id="weight-shadow" />
-        <div id="base">
-          <div id="axle-shadow" />
-        </div>
-        <div id="lever" />
-        <div id="weight" />
-        <div id="axle" />
-        <div id="arm" />
-        <div id="head" />
-      </div>
-    </div>
-    <div id="vert-spacer" />
-  </div>
+  <Turntable {isPlaying} imgSrc={data.track.album.images[1].url} />
   <div id="text">
     <audio controls on:play={onPlay} on:pause={onPause}>
       <source src={data.track.preview_url} type="audio/mpeg" />
