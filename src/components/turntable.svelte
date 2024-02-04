@@ -86,8 +86,8 @@
   }
 
   #label {
-    --label-radius: 180px;
-    --disc-radius: 50px;
+    --label-radius: 210px;
+    --disc-radius: 20px;
 
     position: absolute;
     top: 15px;
@@ -95,7 +95,7 @@
     width: calc(var(--label-radius) + var(--disc-radius));
     height: calc(var(--label-radius) + var(--disc-radius));
     border-radius: 150px;
-    background: repeating-radial-gradient(#111, #000 1px, #111 2px, #222 3px);
+    background: repeating-radial-gradient(#222, #111 1px, #222 2px, #111 3px);
     background-size: 100% 100%;
 
     content: '';
