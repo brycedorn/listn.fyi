@@ -44,8 +44,7 @@ a {
 }
 
 #text {
-  position: unset;
-  right: 160px;
+  text-wrap: pretty;
 }
 
 @media (min-width: 700px) {
@@ -60,5 +59,7 @@ a {
 
   #text {
     position: relative;
+    right: 160px;
+    max-width: 50%;
   }
 }

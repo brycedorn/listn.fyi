@@ -57,7 +57,16 @@
       Your browser does not support the audio element.
     </audio>
     <h1>{data.track.name}</h1>
-    <h2>{data.track.artists.map(({ name }) => name).join(', ')}</h2>
+    {#if data.track.artists.length === 0}
+      <h2>{data.track.artists[0]}</h2>
+    {:else}
+      <h2>
+        {data.track.artists
+          .slice(0, 2)
+          .map(({ name }) => name)
+          .join(', ')}{data.track.artists.length > 2 ? ' and others' : ''}.
+      </h2>
+    {/if}
     <h3>{data.track.album.name}</h3>
     <p>Released {releaseDate}.</p>
     <p>Listen to the full song on <a href={data.track.external_urls.spotify}>Spotify.</a></p>
