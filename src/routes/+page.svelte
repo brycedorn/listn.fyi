@@ -34,12 +34,18 @@
   </div>
   <div id="info">
     <h1>listn.fyi</h1>
-    <p>1) Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (no quotes).</p>
-    <p>2) Add a song you'd recommend to it.</p>
+    <ul>
+      <li>Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (no quotes).</li>
+      <li>Add a song you'd recommend to it.</li>
+      <li>
+        Go to the URL for your Spotify username, e.g. <a href="https://listn.fyi/your-username"
+          >listn.fyi/your-username</a
+        >.
+      </li>
+    </ul>
     <p>
-      3) Go to the URL for your Spotify username, e.g. <a href="https://listn.fyi/your-username"
-        >listn.fyi/your-username</a
-      >.
+      Share this link anywhere! Twitter bio, blog, etc. Playlist changes will immediately reflect
+      here.
     </p>
   </div>
 </center>
@@ -49,9 +55,19 @@
     max-width: 80%;
   }
 
-  #info p {
+  ul {
     text-align: left;
-    margin: 12px 24px;
+    margin: 12px 0;
+  }
+
+  li {
+    list-style-type: lower-roman;
+    padding: 4px;
+  }
+
+  p {
+    padding: 12px;
+    text-wrap: pretty;
   }
 
   #splash-turntable {
