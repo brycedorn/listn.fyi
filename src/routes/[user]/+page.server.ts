@@ -20,11 +20,17 @@ export async function load({ params }) {
   const accessToken = await fetchClientToken();
   const userId = params.user;
 
+  console.info('Fetching recommended song for user:', userId);
+  console.group();
+
   let playlists;
   try {
     playlists = await fetchUserPlaylists(accessToken, userId);
   } catch (e) {
     if (e instanceof Error) {
+      console.error('Fetch playlists: error');
+      console.groupEnd();
+
       return {
         status: 404,
         error: e.message,
@@ -33,11 +39,16 @@ export async function load({ params }) {
     }
   }
 
+  console.info('Fetch playlists: success!');
+
   let recommendPlaylist;
   try {
     recommendPlaylist = findRecommendPlaylist(playlists?.items);
   } catch (e) {
     if (e instanceof Error) {
+      console.error('Get recommended playlist: error');
+      console.groupEnd();
+
       return {
         status: 404,
         error: e.message,
@@ -51,12 +62,18 @@ export async function load({ params }) {
     const track = tracks.items[0];
 
     if (!track) {
+      console.error('Get track: error');
+      console.groupEnd();
+
       return {
         status: 404,
         error: 'No tracks found in playlist',
         userId
       };
     }
+
+    console.info('Get recommended track: success!');
+    console.groupEnd();
 
     return {
       track: track.track,
