@@ -38,8 +38,8 @@
       <li>Make a public playlist on Spotify with the name <b>"listn.fyi"</b> (no quotes).</li>
       <li>Add a song you'd recommend to it.</li>
       <li>
-        Go to the URL for your Spotify username, e.g. <a href="https://listn.fyi/your-username"
-          >listn.fyi/your-username</a
+        Go to the URL for your Spotify username, e.g. <a href="https://listn.fyi/combatfetus"
+          >listn.fyi/combatfetus</a
         >.
       </li>
     </ul>

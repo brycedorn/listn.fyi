@@ -26,7 +26,7 @@
             >"listn.fyi"</b
           >
           (without quotes) and add a song to it. Shareable URL is
-          <b><a href="https://listn.fyi/your-username">listn.fyi/your-spotify-username</a></b
+          <b><a href="https://listn.fyi/your-spotify-username">listn.fyi/your-spotify-username</a></b
           >.</small
         >
       </p>
