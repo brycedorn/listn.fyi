@@ -26,7 +26,7 @@ export async function load({ params }) {
 
   let playlists;
   try {
-    if (invalidChars.some(char => str.includes(char))) {
+    if (invalidChars.some(char => userId.includes(char))) {
       throw new Error("User contains invalid characters.");
     }
 
