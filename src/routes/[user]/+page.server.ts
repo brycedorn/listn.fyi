@@ -9,6 +9,7 @@ import type {
 
 const authUrl = 'https://accounts.spotify.com/api/token';
 const recommendedPlaylistName = 'listn.fyi';
+const invalidChars = ['/', '.']; // Simple blocking of invalid usernames
 
 export async function load({ params }) {
   // let accessToken;
@@ -25,6 +26,10 @@ export async function load({ params }) {
 
   let playlists;
   try {
+    if (invalidChars.some(char => str.includes(char))) {
+      throw new Error("User contains invalid characters.");
+    }
+
     playlists = await fetchUserPlaylists(accessToken, userId);
   } catch (e) {
     if (e instanceof Error) {
