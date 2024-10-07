@@ -4,9 +4,7 @@ on:
     branches: main
   pull_request:
     branches: main
-env:
-  CLIENT_ID: ${{ secrets.CLIENT_ID }}
-  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
 jobs:
   deploy:
     name: Deploy
@@ -18,7 +16,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Deno
         uses: denoland/setup-deno@v1
@@ -26,16 +24,19 @@ jobs:
           deno-version: v1.x
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
+      - name: Install step
+        run: "npm install"
+
       - name: Build step
-        run: 'npm install && npm run build' # 📝 Update the build command(s) if necessary
+        run: "npm run build"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: 'listnfyi'
-          entrypoint: 'mod.ts' # 📝 Update the entrypoint if necessary
-          root: 'build' # 📝 Update the root if necessary
+          project: "listnfyi"
+          entrypoint: "mod.ts"
+          root: "build"
